@@ -14,98 +14,103 @@
 <body>
     <div class="row">
         <div class="container-fluid">
-            <form action="/listar" id="form1">
-                <div class="card container shadow p-3 mb-5 bg-white rounded">
+
+            {% if r %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            {% if r2 %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r2 }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            <form action="/registrar" id="form1" method="post">
+                {% csrf_token %}
+                <div class="card container shadow p-3 mb-5 bg-white rounded" id="cardForm">
                     <div class="card-body">
                         <h3 class="card-title"><strong>REGISTRAR ALUMNO</strong></h3>
+                        <br>
                         <div class="col" id="campos">
                             <div class="col-3" id="campo1">
-                                <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Rut:</strong></label>
+                                <input type="text" class="form-control" name="txtRut" maxlength="10" placeholder="11111111-1" required>
                             </div> 
                             <div class="col-3" id="campo2">
-                                <label for="exampleFormControlInput1" class="form-label">Apellido Paterno:</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Nombre:</strong></label>
+                                <input type="text" class="form-control" name="txtNom" maxlength="50" required>
                             </div>
                             <div class="col-3" id="campo3">
-                                <label for="exampleFormControlInput1" class="form-label">Apellido Materno:</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Apellidos:</strong></label>
+                                <input type="text" class="form-control" name="txtApe" maxlength="50" required>
                             </div>
                         </div>
 
                         <div class="col" id="campos2">
                             <div class="col-3" id="campo1">
-                                <P>SEXO</P>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <P><strong>Sexo:</strong></P>
+                                <div class="form-check form-check-inline" required>
+                                    <input class="form-check-input" type="radio" name="opSex" id="inlineRadio1" value="Masculino">
                                     <label class="form-check-label" for="inlineRadio1">Masculino</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <input class="form-check-input" type="radio" name="opSex" id="inlineRadio2" value="Femenino">
                                     <label class="form-check-label" for="inlineRadio2">Femenino</label>
                                   </div>
                             </div> 
                             <div class="col-3" id="campo2">
-                                <label for="exampleFormControlInput1" class="form-label">Curso:</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Curso:</strong></label>
+                                <select class="form-select" aria-label="Default select example" name="cboCurso" required>
                                     <option selected>Seleccione una opción</option>
-                                    <option value="1">1° Básico</option>
-                                    <option value="1">2° Básico</option>
-                                    <option value="1">3° Básico</option>
-                                    <option value="1">4° Básico</option>
-                                    <option value="1">5° Básico</option>
-                                    <option value="1">6° Básico</option>
-                                    <option value="1">7° Básico</option>
-                                    <option value="1">8° Básico</option>
-                                    <option value="1">1° Medio</option>
-                                    <option value="1">2° Medio</option>
-                                    <option value="1">3° Medio</option>
-                                    <option value="1">4° Medio</option>
+                                    <option value="1° Básico">1° Básico</option>
+                                    <option value="2° Básico">2° Básico</option>
+                                    <option value="3° Básico">3° Básico</option>
+                                    <option value="4° Básico">4° Básico</option>
+                                    <option value="5° Básico">5° Básico</option>
+                                    <option value="6° Básico">6° Básico</option>
+                                    <option value="7° Básico">7° Básico</option>
+                                    <option value="8° Básico">8° Básico</option>
+                                    <option value="1° Medio">1° Medio</option>
+                                    <option value="2° Medio">2° Medio</option>
+                                    <option value="3° Medio">3° Medio</option>
+                                    <option value="4° Medio">4° Medio</option>
                                   </select>
                             </div>
                             <div class="col-3" id="campo3">
-                                <label for="exampleFormControlInput1" class="form-label">Edad:</label>
-                                <input type="number" min="5" max="30" class="form-control" id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Edad:</strong></label>
+                                <input type="number" min="5" max="30" class="form-control" name="txteda" required>
                             </div>
                         </div>
 
                         <div class="col" id="campos2">
                             <div class="col-3" id="campo1">
-                                <P>SEXO</P>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Masculino</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Femenino</label>
-                                  </div>
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Ciudad:</strong></label>
+                                <select class="form-select" aria-label="Default select example" name="cboCiu" required>
+                                    <option selected>Seleccione una opción</option>
+                                    <option value="Rancagua">Rancagua</option>
+                                    <option value="San Fernando">San Fernando</option>
+                                    <option value="Graneros">Graneros</option>
+                                    <option value="Coltauco">Coltauco</option>
+                                    <option value="San Vicente">San Vicente</option>
+                                    <option value="Santa Cruz">Santa Cruz</option>
+                                  </select>
                             </div> 
                             <div class="col-3" id="campo2">
-                                <label for="exampleFormControlInput1" class="form-label">Curso:</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Seleccione una opción</option>
-                                    <option value="1">1° Básico</option>
-                                    <option value="1">2° Básico</option>
-                                    <option value="1">3° Básico</option>
-                                    <option value="1">4° Básico</option>
-                                    <option value="1">5° Básico</option>
-                                    <option value="1">6° Básico</option>
-                                    <option value="1">7° Básico</option>
-                                    <option value="1">8° Básico</option>
-                                    <option value="1">1° Medio</option>
-                                    <option value="1">2° Medio</option>
-                                    <option value="1">3° Medio</option>
-                                    <option value="1">4° Medio</option>
-                                  </select>
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Comuna:</strong></label>
+                                <input type="text" class="form-control" name="txtComu" required> 
                             </div>
                             <div class="col-3">
                                 <div class="container-fluid" align="center">
-                                    <button class="btn btn-primary" id="btnReg"><strong>Registrar</strong></button>
+                                    <input type="submit" class="btn btn-primary" name="btnReg" value="REGISTRAR" id="btnReg">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br><br>
                 </div>
             </form>
         </div>
