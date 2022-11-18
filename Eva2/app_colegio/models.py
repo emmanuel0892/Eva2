@@ -7,6 +7,6 @@ class alumnos (models.Model):
     apeMaterno = models.TextField(max_length=50, null=False)
     sexo = models.TextField(max_length=50, null=False)
     curso = models.TextField(max_length=50, null=False)
-    contacto = models.IntegerField(null=False)
+    edad = models.IntegerField(null=False)
     ciudad = models.TextField(max_length=50, null=False)
     comnuna = models.TextField(max_length=50, null=False)

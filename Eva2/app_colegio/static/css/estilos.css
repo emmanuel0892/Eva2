@@ -1,0 +1,50 @@
+#txtinicio {
+    margin-top: 20px;
+}
+
+#txt1:hover{
+    transform: scale(1.25);
+    transition-duration: 2s;
+}
+
+#txt2:hover{
+    transform: scale(1.25);
+    transition-duration: 1.5s;
+}
+
+#campos{
+    display: flex;
+    position: relative;
+    align-self: center;
+}
+
+#campo1, #campo2, #campo3 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.card-body{
+    align-self: center;
+}
+
+.card-title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px !important;
+}
+
+.card {
+    margin-top: 20px;
+    box-shadow: 2px;
+}
+
+#form1 {
+    padding-top: 20px;
+}
+
+#campos2{
+    display: flex;
+    position: relative;
+    align-self: center;
+    margin-top: 30px;
+}

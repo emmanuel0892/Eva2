@@ -1,15 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <title>Document</title>
 </head>
 <body>
     
-    <a href=""><h1>VOLVER AL FORMULARIO DE REGISTRO DE "ENTIDAD"</h1></a>
-    <a href=""><h1>IR AL LISTADO DE "ENTIDAD"</h1></a>
+    <div class="row">
+        <div class="container-fluid" id="txtinicio">
+            <a href="{% url 'registrar' %}"><h1 id="txt1" align="center">VOLVER AL FORMULARIO DE REGISTRO DE "ENTIDAD"</h1></a>
+            <a href="{% url 'listado' %}"><h1 id="txt2" align="center">IR AL LISTADO DE "ENTIDAD"</h1></a>
+        </div>
+    </div>
 
 </body>
 </html>
