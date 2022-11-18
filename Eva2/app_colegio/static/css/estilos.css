@@ -48,3 +48,14 @@
     align-self: center;
     margin-top: 30px;
 }
+
+.col {
+    display: flex !important;
+}
+
+#btnReg{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+}
