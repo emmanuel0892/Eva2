@@ -29,7 +29,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="card text-center" id="cardinfo">
+                {% if r %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            {% if r2 %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r2 }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+                <div class="card text-center" id="cardtable">
                   <div class="card-body">
                     <div class="container">
                         <h2>LISTA DE ALUMNOS</h2>

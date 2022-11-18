@@ -37,3 +37,18 @@ def listado(request):
     }
 
     return render(request, 'listado.html',datos)
+
+def eliminar(request, id):
+    try:
+        alumn = alumnos.objects.get(id=id)
+        alumn.delete()
+
+        alum = alumnos.objects.all().values()
+        datos = {
+            'alum':alum,
+            'r':'Alumno Eliminado Correctamente!!!',
+        }
+
+        return render(request, 'listado.html', datos)
+    except:
+        pass
