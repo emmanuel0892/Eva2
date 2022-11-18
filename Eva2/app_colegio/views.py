@@ -30,4 +30,10 @@ def registrar(request):
     return render(request, 'form_registrar.html')
 
 def listado(request):
-    return render(request, 'listado.html')
+
+    alum = alumnos.objects.all().values()
+    datos = {
+        'alum':alum
+    }
+
+    return render(request, 'listado.html',datos)
