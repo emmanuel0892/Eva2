@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from app_colegio.models import alumnos
 
 def inicio(request):
@@ -74,7 +74,6 @@ def actualizar(request, id):
 def modificar(request, id):
     
     try:
-        rut = request.POST['txtRut']
         nom = request.POST['txtNom']
         ape = request.POST['txtApe']
         sex = request.POST['opSex']
@@ -84,7 +83,6 @@ def modificar(request, id):
         com = request.POST['txtComu']
 
         alumn = alumnos.objects.get(id=id)
-        alumn.rut = rut
         alumn.nombre = nom
         alumn.apellidos = ape
         alumn.sexo = sex
@@ -95,18 +93,16 @@ def modificar(request, id):
         alumn.save()
 
         alum = alumnos.objects.all().values()
-
         datos = {
-                'alum':alum,
-                'r':'Alumno modificado Correctamente!!!',
-            }
+            'alum':alum,
+            'r':'Datos actualizados correctamente!!!',
+        }
 
-        return render(request, 'listado.html', datos)
+        return render(request, 'listado.html',datos)
     except:
-        alumn = alumnos.objects.all().values()
-
+        alum = alumnos.objects.all().values()
         datos = {
-                'alumn':alumn
-            }
-
-        return render(request, 'listado.html', datos)
+            'alum':alum,
+            'r2':'Datos actualizados correctamente!!!',
+        }
+        return render(request, 'listado.html',datos)
