@@ -52,3 +52,61 @@ def eliminar(request, id):
         return render(request, 'listado.html', datos)
     except:
         pass
+
+#Vista Actualizar
+def actualizar(request, id):
+    try:
+        alumn = alumnos.objects.get(id=id)
+        datos = {
+            'alumn':alumn,
+        }
+        return render(request, 'form_actualizar.html', datos)
+
+    except:
+        alum = alumnos.objects.all().values()
+        datos = {
+            'alum':alum
+        }
+    return render(request, 'listado.html',datos)
+
+
+#guardar datos actualizados
+def modificar(request, id):
+    
+    try:
+        rut = request.POST['txtRut']
+        nom = request.POST['txtNom']
+        ape = request.POST['txtApe']
+        sex = request.POST['opSex']
+        cur = request.POST['cboCurso']
+        eda = request.POST['txteda']
+        ciu = request.POST['cboCiu']
+        com = request.POST['txtComu']
+
+        alumn = alumnos.objects.get(id=id)
+        alumn.rut = rut
+        alumn.nombre = nom
+        alumn.apellidos = ape
+        alumn.sexo = sex
+        alumn.curso = cur
+        alumn.edad = eda
+        alumn.ciudad = ciu
+        alumn.comuna = com
+        alumn.save()
+
+        alum = alumnos.objects.all().values()
+
+        datos = {
+                'alum':alum,
+                'r':'Alumno modificado Correctamente!!!',
+            }
+
+        return render(request, 'listado.html', datos)
+    except:
+        alumn = alumnos.objects.all().values()
+
+        datos = {
+                'alumn':alumn
+            }
+
+        return render(request, 'listado.html', datos)

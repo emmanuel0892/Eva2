@@ -1,0 +1,218 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap y css -->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+        <div class="container-fluid">
+
+            {% if r %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            {% if r2 %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5 align="center">{{ r2 }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            <form action="/modificar/{{ alumn.id }}" id="form1" method="post">
+                {% csrf_token %}
+                <div class="card container shadow p-3 mb-5 bg-white rounded" id="cardForm">
+                    <div class="card-body">
+                        <h3 class="card-title"><strong>ACTUALIZAR ALUMNO</strong></h3>
+                        <br>
+                        <div class="col" id="campos">
+                            <div class="col-3" id="campo1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Rut:</strong></label>
+                                <input type="text" class="form-control" name="txtRut" maxlength="10" placeholder="11111111-1" value="{{ alumn.rut }}" disabled>
+                            </div> 
+                            <div class="col-3" id="campo2">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Nombre:</strong></label>
+                                <input type="text" class="form-control" name="txtNom" maxlength="50" required value="{{ alumn.nombre }}">
+                            </div>
+                            <div class="col-3" id="campo3">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Apellidos:</strong></label>
+                                <input type="text" class="form-control" name="txtApe" maxlength="50" required value="{{ alumn.apellidos }}">
+                            </div>
+                        </div>
+
+                        <div class="col" id="campos2">
+                            <div class="col-3" id="campo1">
+                                <P><strong>Sexo:</strong></P>
+                                <div class="form-check form-check-inline" required>
+                                    {% if alumn.sexo == 'Masculino' %}
+                                    <input class="form-check-input" type="radio" checked name="opSex" id="inlineRadio1" value="Masculino">
+                                    {% else %}
+                                    <input class="form-check-input" type="radio" name="opSex" id="inlineRadio1" value="Masculino">
+                                    {% endif %}
+                                    <label class="form-check-label" for="inlineRadio1">Masculino</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    {% if alumn.sexo == 'Femenino' %}
+                                    <input class="form-check-input" type="radio" checked name="opSex" id="inlineRadio2" value="Femenino">
+                                    {% else %}
+                                    <input class="form-check-input" type="radio" name="opSex" id="inlineRadio2" value="Femenino">
+                                    {% endif %}
+                                    <label class="form-check-label" for="inlineRadio2">Femenino</label>
+                                  </div>
+                            </div> 
+                            <div class="col-3" id="campo2">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Curso:</strong></label>
+                                <select class="form-select" aria-label="Default select example" name="cboCurso" required>
+                                    <option selected>Seleccione una opción</option>
+                                    {% if alumn.curso == '1° Básico' %}
+                                    <option value="1° Básico" selected>1° Básico</option>
+                                    {% else %}
+                                    <option value="1° Básico" selected>1° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '2° Básico' %}
+                                    <option value="2° Básico" selected>2° Básico</option>
+                                    {% else %}
+                                    <option value="2° Básico">2° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '3° Básico' %}
+                                    <option value="3° Básico" selected>3° Básico</option>
+                                    {% else %}
+                                    <option value="3° Básico">3° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '4° Básico' %}
+                                    <option value="4° Básico" selected>4° Básico</option>
+                                    {% else %}
+                                    <option value="4° Básico">4° Básico</option>
+                                    {% endif %}
+
+
+                                    {% if alumn.curso == '5° Básico' %}
+                                    <option value="5° Básico" selected>5° Básico</option>
+                                    {% else %}
+                                    <option value="5° Básico">5° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '6° Básico' %}
+                                    <option value="6° Básico" selected>6° Básico</option>
+                                    {% else %}
+                                    <option value="6° Básico">6° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '7° Básico' %}
+                                    <option value="7° Básico" selected>7° Básico</option>
+                                    {% else %}
+                                    <option value="7° Básico">7° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '8° Básico' %}
+                                    <option value="8° Básico" selected>8° Básico</option>
+                                    {% else %}
+                                    <option value="8° Básico">8° Básico</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '1° Medio' %}
+                                    <option value="1° Medio" selected>1° Medio</option>
+                                    {% else %}
+                                    <option value="1° Medio">1° Medio</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '2° Medio' %}
+                                    <option value="2° Medio" selected>2° Medio</option>
+                                    {% else %}
+                                    <option value="2° Medio">2° Medio</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '3° Medio' %}
+                                    <option value="3° Medio" selected>3° Medio</option>
+                                    {% else %}
+                                    <option value="3° Medio">3° Medio</option>
+                                    {% endif %}
+
+                                    {% if alumn.curso == '4° Medio' %}
+                                    <option value="4° Medio" selected>4° Medio</option>
+                                    {% else %}
+                                    <option value="4° Medio">4° Medio</option>
+                                    {% endif %}
+                                  </select>
+                            </div>
+                            <div class="col-3" id="campo3">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Edad:</strong></label>
+                                <input type="number" min="5" max="30" class="form-control" value="{{ alumn.edad }}" name="txteda" required>
+                            </div>
+                        </div>
+
+                        <div class="col" id="campos2">
+                            <div class="col-3" id="campo1">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Ciudad:</strong></label>
+                                <select class="form-select" aria-label="Default select example" name="cboCiu" required>
+                                    <option selected>Seleccione una opción</option>
+                                    {% if alumn.ciudad == 'Rancagua' %}
+                                    <option value="Rancagua" selected>Rancagua</option>
+                                    {% else %}
+                                    <option value="Rancagua">Rancagua</option>
+                                    {% endif %}
+
+                                    {% if alumn.ciudad == 'San Fernando' %}
+                                    <option value="San Fernando" selected>San Fernando</option>
+                                    {% else %}
+                                    <option value="San Fernando">San Fernando</option>
+                                    {% endif %}
+
+                                    {% if alumn.ciudad == 'Graneros' %}
+                                    <option value="Graneros" selected>Graneros</option>
+                                    {% else %}
+                                    <option value="Graneros">Graneros</option>
+                                    {% endif %}
+
+                                    {% if alumn.ciudad == 'Coltauco' %}
+                                    <option value="Coltauco" selected>Coltauco</option>
+                                    {% else %}
+                                    <option value="Coltauco">Coltauco</option>
+                                    {% endif %}
+
+                                    {% if alumn.ciudad == 'San Vicent' %}
+                                    <option value="San Vicente" selected>San Vicente</option>
+                                    {% else %}
+                                    <option value="San Vicente">San Vicente</option>
+                                    {% endif %}
+
+                                    {% if alumn.ciudad == 'Santa Cruz' %}
+                                    <option value="Santa Cruz" selected>Santa Cruz</option>
+                                    {% else %}
+                                    <option value="Santa Cruz">Santa Cruz</option>
+                                    {% endif %}
+                                  </select>
+                            </div> 
+                            <div class="col-3" id="campo2">
+                                <label for="exampleFormControlInput1" class="form-label"><strong>Comuna:</strong></label>
+                                <input type="text" class="form-control" name="txtComu" value="{{ alumn.ciudad }}" required> 
+                            </div>
+                            <div class="col-3">
+                                <div class="container-fluid" align="center">
+                                    <input type="submit" class="btn btn-primary" name="btnReg" value="REGISTRAR" id="btnReg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>
